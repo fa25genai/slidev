@@ -25,5 +25,6 @@ export default antfu({
     ignores: [
       'packages/create-theme/template/package.json',
       'packages/create-app/template/package.json',
+      'packages/slidev/package.json',
     ],
   })

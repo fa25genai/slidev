@@ -9,6 +9,7 @@ import { createVDragDirective } from '../modules/v-drag'
 import { createVMarkDirective } from '../modules/v-mark'
 import { createVMotionDirectives } from '../modules/v-motion'
 import setupRoutes from '../setup/routes'
+import setupMessageBridge from './message-bridge'
 
 import '#slidev/styles'
 
@@ -40,6 +41,8 @@ export default async function setupMain(app: App) {
     app,
     router,
   }
+
+  await setupMessageBridge(context)
 
   for (const setup of setups)
     await setup(context)
