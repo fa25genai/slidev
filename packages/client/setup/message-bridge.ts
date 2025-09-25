@@ -23,6 +23,7 @@ export default function setupMessageBridge(_ctx: AppContext) {
       const { nextSlide, prevSlide } = useNav()
       switch (data?.type) {
         case 'slide.navigate':
+          console.warn('Not implemented yet')
           break
         case 'slide.next':
           await nextSlide()
@@ -41,7 +42,7 @@ export default function setupMessageBridge(_ctx: AppContext) {
 
   const handler = (event: MessageEvent) => {
     try {
-      // Maybe extend in the future with origin checkin
+      // Maybe extend in the future with origin checking
 
       const payload = event.data as unknown
       if (!payload || typeof payload !== 'object') {
@@ -62,4 +63,8 @@ export default function setupMessageBridge(_ctx: AppContext) {
   }
 
   window.addEventListener('message', handler)
+
+  return () => {
+    window.removeEventListener('message', handler)
+  }
 }
