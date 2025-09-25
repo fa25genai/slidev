@@ -1,7 +1,7 @@
 {
   "name": "@slidev/cli",
   "type": "module",
-  "version": "52.2.4",
+  "version": "52.2.4-custom",
   "description": "Presentation slides for developers",
   "author": "Anthony Fu <anthonyfu117@hotmail.com>",
   "license": "MIT",
@@ -57,7 +57,7 @@
     "@shikijs/markdown-it": "catalog:frontend",
     "@shikijs/twoslash": "catalog:prod",
     "@shikijs/vitepress-twoslash": "catalog:prod",
-    "@slidev/client": "workspace:*",
+    "@slidev/client": "52.2.4-custom",
     "@slidev/parser": "workspace:*",
     "@slidev/types": "workspace:*",
     "@unocss/extractor-mdc": "catalog:prod",
