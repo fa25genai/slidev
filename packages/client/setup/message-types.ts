@@ -1,9 +1,19 @@
+export interface SlideNavigateData {
+  type: 'slide.navigate'
+  slideNbr: number
+  clicks?: number
+}
+
+export interface SlideNextData {
+  type: 'slide.next'
+}
+
+export interface SlidePrevData {
+  type: 'slide.prev'
+}
+
+export type SlideMessageData = SlideNavigateData | SlideNextData | SlidePrevData
 export interface SlideMessage {
   appId: 'slidev'
-  data: {
-    type: 'slide.navigate' | 'slide.next' | 'slide.prev'
-    slideNbr: number
-    clicks: number
-  }
+  data: SlideMessageData
 }
-export type SlideMessageData = SlideMessage['data']

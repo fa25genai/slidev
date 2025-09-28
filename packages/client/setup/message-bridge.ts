@@ -12,7 +12,7 @@ export default function setupMessageBridge(_ctx: AppContext) {
   const handleMessage = async (data: SlideMessageData) => {
     try {
       const { nextSlide, prevSlide, go } = useNav()
-      switch (data?.type) {
+      switch (data.type) {
         case 'slide.navigate':
           await go(data.slideNbr, data.clicks)
           break
@@ -23,7 +23,7 @@ export default function setupMessageBridge(_ctx: AppContext) {
           await prevSlide()
           break
         default:
-          console.warn('[MessageBridge] Unknown message type:', data?.type)
+          console.warn('[MessageBridge] Unknown message type:', data)
       }
     }
     catch (err) {
