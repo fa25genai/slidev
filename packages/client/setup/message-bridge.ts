@@ -1,4 +1,4 @@
-import type { SlideMessage, SlideMessageData } from '@slidev/client/setup/message-types.ts'
+import type { SlideMessage, SlideMessageData } from '@slidev/client/setup/message-types'
 import type { AppContext } from '@slidev/types'
 import { useNav } from '@slidev/client'
 
