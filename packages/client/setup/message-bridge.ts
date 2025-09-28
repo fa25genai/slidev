@@ -22,8 +22,6 @@ export default function setupMessageBridge(_ctx: AppContext) {
         case 'slide.prev':
           await prevSlide()
           break
-        default:
-          console.warn('[MessageBridge] Unknown message type:', data)
       }
     }
     catch (err) {
