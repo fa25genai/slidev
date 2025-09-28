@@ -1,15 +1,6 @@
+import type { SlideMessage, SlideMessageData } from '@slidev/client/setup/message-types.ts'
 import type { AppContext } from '@slidev/types'
 import { useNav } from '@slidev/client'
-
-// May be moved outside of this file into the types package of slidev
-// -> not that easy for mwp bcs of separate types package
-interface SlideMessage {
-  appId: 'slidev'
-  data: {
-    type: 'slide.navigate' | 'slide.next' | 'slide.prev'
-    value?: number
-  }
-}
 
 /**
  * Message bridge to accept window post messages and trigger navigation.
@@ -18,12 +9,12 @@ export default function setupMessageBridge(_ctx: AppContext) {
   if (typeof window === 'undefined')
     return
 
-  const handleMessage = async (data: any) => {
+  const handleMessage = async (data: SlideMessageData) => {
     try {
-      const { nextSlide, prevSlide } = useNav()
+      const { nextSlide, prevSlide, go } = useNav()
       switch (data?.type) {
         case 'slide.navigate':
-          console.warn('Not implemented yet')
+          await go(data.slideNbr, data.clicks)
           break
         case 'slide.next':
           await nextSlide()
@@ -40,7 +31,7 @@ export default function setupMessageBridge(_ctx: AppContext) {
     }
   }
 
-  const handler = (event: MessageEvent) => {
+  const handler = (event: MessageEvent<SlideMessage>) => {
     try {
       // Maybe extend in the future with origin checking
 
